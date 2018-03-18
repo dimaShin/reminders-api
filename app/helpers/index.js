@@ -8,7 +8,6 @@ function getConfig(slice = null) {
 }
 
 function getPort() {
-
   return process.env.PORT || getConfig('server').PORT;
 }
 
