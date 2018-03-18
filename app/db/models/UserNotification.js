@@ -1,16 +1,17 @@
 const { DataTypes } = require('sequelize');
 
-module.exports = {
-  name: 'UserNotification',
-  define: {
+module.exports = db => {
+
+  db.define('UserNotification', {
     id: {
       type: DataTypes.BIGINT,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
     }
-  },
-  associate({ Notification, User, UserNotification }) {
+  });
+
+  return async ({ Notification, User, UserNotification }) => {
     UserNotification.belongsTo(Notification);
     UserNotification.belongsTo(User);
   }

@@ -6,7 +6,10 @@
   "scripts": {
     "test": "jest",
     "docs": "apidoc -i app/ -o static/docs/",
-    "start": "NODE_ENV=development node index.js",
+    "start": "pm2 start ecosystem.config.js && pm2 monit",
+    "stop": "pm2 stop ecosystem.config.js",
+    "restart": "pm2 restart ecosystem.config.js",
+    "reload": "pm2 reload ecosystem.config.js",
     "start:sync": "NODE_ENV=development FORCE_SYNC=true node index.js",
     "docker:up": "docker-compose -f docker/docker-compose.yml -p reminder up -d",
     "docker:restart": "docker-compose -f docker/docker-compose.yml -p reminder restart",
@@ -22,11 +25,16 @@
   "license": "ISC",
   "dependencies": {
     "amqplib": "^0.5.2",
+    "debug": "^3.1.0",
     "koa": "^2.5.0",
+    "koa-body": "^2.5.0",
+    "koa-compress": "^2.0.0",
     "koa-mount": "^3.0.0",
     "koa-router": "^7.4.0",
+    "koa-session": "^5.8.1",
     "koa-static": "^4.0.2",
     "pg": "^7.4.1",
+    "pm2": "^2.10.1",
     "sequelize": "^4.37.1",
     "sequelize-cli": "^4.0.0"
   },
