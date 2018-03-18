@@ -1,0 +1,22 @@
+version: '3'
+# Start messaging broker
+
+services:
+  postgres:
+      image: postgres:latest
+      container_name: rmd_posgres
+      environment:
+          - POSTGRES_USER=postgres
+          - POSTGRES_PASSWORD=123456
+          - PGDATA=/var/lib/volumes/pgdata
+          - POSTGRES_DB=rmd_db
+      volumes:
+          - ./volumes/local:/var/lib/volumes
+      ports:
+          - "5433:5432"
+  redis:
+      image: rabbitmq:3.6-management-alpine
+      container_name: rmd_rabbitmq
+      ports:
+          - "5672:5672"
+          - "15672:15672"

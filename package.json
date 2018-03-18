@@ -4,8 +4,35 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "docs": "apidoc -i app/ -o static/docs/",
+    "start": "NODE_ENV=development node index.js",
+    "start:sync": "NODE_ENV=development FORCE_SYNC=true node index.js",
+    "docker:up": "docker-compose -f docker/docker-compose.yml -p reminder up -d",
+    "docker:restart": "docker-compose -f docker/docker-compose.yml -p reminder restart",
+    "docker:stop": "docker-compose -f docker/docker-compose.yml -p reminder stop"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/?(*.)(spec).js?(x)"
+    ]
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.5.2",
+    "koa": "^2.5.0",
+    "koa-mount": "^3.0.0",
+    "koa-router": "^7.4.0",
+    "koa-static": "^4.0.2",
+    "pg": "^7.4.1",
+    "sequelize": "^4.37.1",
+    "sequelize-cli": "^4.0.0"
+  },
+  "devDependencies": {
+    "apidoc": "^0.17.6",
+    "jest": "^22.4.2",
+    "supertest": "^3.0.0"
+  }
 }
