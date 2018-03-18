@@ -12,7 +12,7 @@ module.exports = {
     time: DataTypes.TIME,
   },
   afterCreate(connection) {
-    connection.query('﻿ALTER TABLE "Notifications" ADD COLUMN location polygon;');
+    connection.query('﻿ALTER TABLE "Notifications" ADD COLUMN IF NOT EXISTS location polygon;');
   },
   associate({ Notification, Reminder, User }) {
     Notification.belongsTo(Reminder);
