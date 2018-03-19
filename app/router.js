@@ -1,16 +1,9 @@
 const Router = require("koa-router");
 const router = new Router();
-const docsController = require('./controllers/docs/docs.controller');
+const notiController = require('./controllers/notifications.controller');
 
-/**
- * @api {get} / Request Api Documentation
- * @apiName GetDocs
- * @apiGroup HTML
- *
- * @apiSuccess {HTML} body documentation page.
- */
-router.get("/", docsController.get);
+router.get("/notifications", notiController.get);
 
-router.get('*', ctx => console.log(ctx));
+router.post("/notifications", notiController.create);
 
 module.exports = router;

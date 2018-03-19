@@ -1,8 +1,8 @@
 const { DataTypes } = require('sequelize');
 
-module.exports = {
-  name: 'Notification',
-  define: {
+module.exports = db => {
+
+  db.define('Notification', {
     id: {
       type: DataTypes.BIGINT,
       allowNull: false,
@@ -10,12 +10,11 @@ module.exports = {
       autoIncrement: true
     },
     time: DataTypes.TIME,
-  },
-  afterCreate(connection) {
-    connection.query('﻿ALTER TABLE "Notifications" ADD COLUMN IF NOT EXISTS location polygon;');
-  },
-  associate({ Notification, Reminder, User }) {
+    location: DataTypes.POLYGON,
+  });
+
+  return ({ Notification, Reminder, User }) => {
     Notification.belongsTo(Reminder);
-    Notification.belongsToMany(User, { through: 'UserNotification' });
+    Notification.belongsToMany(User, {through: 'UserNotification'});
   }
 };

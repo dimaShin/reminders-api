@@ -1,5 +1,5 @@
 const helper = require('./index');
-const config = require('../config/config.test');
+const config = require(`../config/config.${process.env.NODE_ENV}`);
 
 describe('testing helper: index', () => {
   let originEnv;
