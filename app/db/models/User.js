@@ -8,7 +8,8 @@ module.exports = db => {
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
-    }
+    },
+    meta: DataTypes.JSON,
   });
 
   return async ({ Notification, User }) => {
