@@ -14,9 +14,19 @@ services:
           - ./volumes/local:/var/lib/volumes
       ports:
           - "5433:5432"
-  redis:
+
+  rabbitmq:
       image: rabbitmq:3.6-management-alpine
       container_name: rmd_rabbitmq
       ports:
           - "5672:5672"
           - "15672:15672"
+
+  memcached:
+      image: memcached:alpine
+      container_name: rmd_memcached
+      ports:
+        - '11211:11211'
+      environment:
+        - MEMCACHED_USERNAME=app
+        - MEMCACHED_PASSWORD=123456

@@ -35,5 +35,23 @@ module.exports = {
   },
   amqp: {
     host: 'amqp://localhost',
+  },
+  auth0: {
+    clientId: 'evZPYtjHAh_L70WOw_3m1xDl_C2iiTEC',
+    domain: 'geo-reminder.auth0.com',
+    clientSecret: 'WCXJW51tdMpPW27ZjYmRO0-kQS4WEXm0ZFMHUdJldt8Wrr5CTAlWCBr6xUdtieCY',
+    endpoints: {
+      auth: 'https://geo-reminder.auth0.com/authorize',
+      token: 'https://geo-reminder.auth0.com/oauth/token',
+      userInfo: 'https://geo-reminder.auth0.com/userinfo',
+      openIdConf: 'https://geo-reminder.auth0.com/.well-known/openid-configuration',
+      webKeySet: 'https://geo-reminder.auth0.com/.well-known/jwks.json',
+    }
+  },
+  memcached: {
+    host: 'localhost',
+    port: 11211,
+    username: 'app',
+    password: '123456',
   }
 };
